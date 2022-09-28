@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohazerr <mohazerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgamil <mgamil@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 15:37:24 by mohazerr          #+#    #+#             */
-/*   Updated: 2022/09/27 00:37:17 by mohazerr         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:08:11 by mgamil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char const *argv[])
 		return (printf("./a.out [file] [xnumberlines]\n"));
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 3)
-		return (printf("error while reading %s\n", argv[1]));	
+		return (printf("error while reading %s\n", argv[1]));
 	max = atoi(argv[2]);
 	while (++i <= max && s)
 	{

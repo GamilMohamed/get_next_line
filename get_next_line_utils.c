@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohazerr <mohazerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgamil <mgamil@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 03:35:31 by mohazerr          #+#    #+#             */
-/*   Updated: 2022/09/27 00:48:30 by mohazerr         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:07:56 by mgamil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ void	*ft_calloc(size_t n)
 	return (new);
 }
 
-char *ft_strchr(char *s, char x)
+char	*ft_strchr(char *s, char x)
 {
 	size_t	i;
-	i = 0;
 
+	i = 0;
 	while (s[i])
 	{
 		if (s[i] == x)
