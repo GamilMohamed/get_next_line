@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgamil <mgamil@42.student.fr>              +#+  +:+       +#+        */
+/*   By: mohazerr <mohazerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 15:37:24 by mohazerr          #+#    #+#             */
-/*   Updated: 2022/09/26 19:57:34 by mgamil           ###   ########.fr       */
+/*   Updated: 2022/09/27 00:37:17 by mohazerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ int	main(int argc, char const *argv[])
 			break ;
 		printf("[%.*i/%.i] %s", lenmax(max) + 1, i, max, s);
 	}
-	printf("\nEOL\n");
 	return (0);
 }

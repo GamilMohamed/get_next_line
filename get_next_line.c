@@ -6,7 +6,7 @@
 /*   By: mohazerr <mohazerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 15:46:50 by mohazerr          #+#    #+#             */
-/*   Updated: 2022/09/26 00:12:56 by mohazerr         ###   ########.fr       */
+/*   Updated: 2022/09/27 00:48:55 by mohazerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ char	*erase_first_line(char *buffer);
 
 char	*erase_first_line(char *buffer)
 {
-	size_t	lenline;
 	size_t	i;
+	size_t	x;
 	char	*new;
 
-	lenline = 0;
+	x = 0;
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
@@ -38,7 +38,7 @@ char	*erase_first_line(char *buffer)
 	new = ft_calloc(ft_strlen(buffer) - i + 1);
 	i++;
 	while (buffer[i])
-		new[lenline++] = buffer[i++];
+		new[x++] = buffer[i++];
 	free(buffer);
 	return (new);
 }
@@ -75,7 +75,7 @@ char	*read_whole_file(int fd, char *buffer)
 	if (!buffer)
 		buffer = ft_calloc(1);
 	temp = ft_calloc(BUFFER_SIZE + 1);
-	while (output > 0 && !strchr(buffer, '\n'))
+	while (output > 0 && !ft_strchr(buffer, '\n'))
 	{
 		output = read(fd, temp, BUFFER_SIZE);
 		if (output == -1)
@@ -104,16 +104,3 @@ char	*get_next_line(int fd)
 	buffer = erase_first_line(buffer);
 	return (line);
 }
-
-// #include <fcntl.h>
-// int main(void)
-// {
-// 	int fd;
-// 	char *s;
-// 	fd = open("42_with_nl", O_RDONLY);
-// 	printf("appel 2\n");
-// 		get_next_line(fd);
-// 	s = get_next_line(fd);
-// 	printf("%s", s);
-// 	return 0;
-// }
