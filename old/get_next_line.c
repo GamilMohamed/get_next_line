@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgamil <mgamil@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mohazerr <mohazerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 15:46:50 by mohazerr          #+#    #+#             */
-/*   Updated: 2022/11/09 20:32:59 by mgamil           ###   ########.fr       */
+/*   Updated: 2022/09/27 00:48:55 by mohazerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <fcntl.h>
 
 char	*get_next_line(int fd);
-char	*read_first_line(int fd, char *buffer);
+char	*read_whole_file(int fd, char *buffer);
 char	*get_first_line(char *buffer);
 char	*erase_first_line(char *buffer);
 
@@ -36,12 +36,9 @@ char	*erase_first_line(char *buffer)
 		return (NULL);
 	}
 	new = ft_calloc(ft_strlen(buffer) - i + 1);
-	if (!new)
-		return (NULL);
 	i++;
 	while (buffer[i])
 		new[x++] = buffer[i++];
-	new[x] = 0;
 	free(buffer);
 	return (new);
 }
@@ -57,8 +54,6 @@ char	*get_first_line(char *buffer)
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2);
-	if (!line)
-		return (NULL);
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 	{
@@ -67,11 +62,10 @@ char	*get_first_line(char *buffer)
 	}
 	if (buffer[i] && buffer[i] == '\n')
 		line[i++] = '\n';
-	line[i] = 0;
 	return (line);
 }
 
-char	*read_first_line(int fd, char *buffer)
+char	*read_whole_file(int fd, char *buffer)
 {
 	int		output;
 	char	*temp;
@@ -81,8 +75,6 @@ char	*read_first_line(int fd, char *buffer)
 	if (!buffer)
 		buffer = ft_calloc(1);
 	temp = ft_calloc(BUFFER_SIZE + 1);
-	if (!temp)
-		return (NULL);
 	while (output > 0 && !ft_strchr(buffer, '\n'))
 	{
 		output = read(fd, temp, BUFFER_SIZE);
@@ -107,21 +99,8 @@ char	*get_next_line(int fd)
 
 	if (BUFFER_SIZE < 1 || fd < 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buffer = read_first_line(fd, buffer);
+	buffer = read_whole_file(fd, buffer);
 	line = get_first_line(buffer);
 	buffer = erase_first_line(buffer);
 	return (line);
 }
-
-// #include <stdio.h>
-
-// int main()
-// {
-// 	int fd;
-// 	char *s;
-
-// 	fd = open("gnlTester/files/big_line_no_nl", O_RDONLY);
-// 	s = get_next_line(fd);	
-// 	printf("%i\n", fd);
-// 	printf("%s\n", s);
-// }
